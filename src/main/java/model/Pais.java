@@ -1,6 +1,7 @@
-package com.example.provincies;
+package model;
 
 import jakarta.persistence.*;
+import model.Provincia;
 
 import java.util.List;
 @Entity
@@ -14,14 +15,13 @@ public class Pais {
     @OneToMany(mappedBy = "pais",cascade = CascadeType.ALL)
     private List<Provincia> provincias;
 
-    public Pais(Long id, String nom, List<Provincia> provincias) {
-        this.id = id;
-        this.nom = nom;
-        this.provincias = provincias;
-    }
-
-    public Pais() {
-
+    @Override
+    public String toString() {
+        return "Pais{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", provincias=" + provincias +
+                '}';
     }
 
     public Long getId() {

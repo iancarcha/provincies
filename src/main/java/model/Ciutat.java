@@ -1,6 +1,7 @@
-package com.example.provincies;
+package model;
 
 import jakarta.persistence.*;
+
 @Entity
 public class Ciutat {
 
@@ -12,13 +13,15 @@ public class Ciutat {
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
-    public Ciutat(Long id, String nom, Provincia provincia) {
+    @ManyToOne
+    @JoinColumn(name = "intermitja_id")
+    private Intermitja intermitja;
+
+    public Ciutat(Long id, String nom, Provincia provincia, Intermitja intermitja) {
         this.id = id;
         this.nom = nom;
         this.provincia = provincia;
-    }
-
-    public Ciutat() {
+        this.intermitja = intermitja;
     }
 
     public Long getId() {
@@ -43,5 +46,23 @@ public class Ciutat {
 
     public void setProvincia(Provincia provincia) {
         this.provincia = provincia;
+    }
+
+    public Intermitja getIntermitja() {
+        return intermitja;
+    }
+
+    public void setIntermitja(Intermitja intermitja) {
+        this.intermitja = intermitja;
+    }
+
+    @Override
+    public String toString() {
+        return "Ciutat{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", provincia=" + provincia +
+                ", intermitja=" + intermitja +
+                '}';
     }
 }

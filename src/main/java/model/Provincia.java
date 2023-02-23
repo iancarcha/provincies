@@ -1,4 +1,4 @@
-package com.example.provincies;
+package model;
 
 import jakarta.persistence.*;
 
